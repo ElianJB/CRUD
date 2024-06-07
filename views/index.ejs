@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css'/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: black;
+      color: white;
+    }
+    .list-group-item {
+      background-color: black;
+      border: 1px solid white;
+    }
+    .form-control, .btn {
+      background-color: #333;
+      color: white;
+    }
+    .form-control::placeholder {
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    
+    
+    <h2 class="mt-5">Lista de Clientes</h2>
+    <ul class="list-group">
+      <% for(let i = 0; i < result.length; i++) { %>
+        <li class="list-group-item">
+          <%= result[i].name %> (<%= result[i]._id %>)
+        </li>
+      <% } %>
+    </ul>
+
+    <h2 class="mt-5">Cadastro de Clientes</h2>
+    <form action="save" method="POST">
+      <div class="form-group">
+        <label for="name">Nome:</label>
+        <input type="text" class="form-control" id="name" name="name" required placeholder="Digite o nome">
+      </div>
+      <div class="form-group">
+        <label for="idade">Idade:</label>
+        <input type="number" class="form-control" id="idade" name="idade" required placeholder="Digite a idade">
+      </div>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+
+    <h2 class="mt-5">Exclusão de Clientes</h2>
+    <form action="delete" method="POST">
+      <div class="form-group">
+        <label for="id">ID:</label>
+        <input type="text" class="form-control" id="id" name="id" required placeholder="Digite o ID">
+      </div>
+      <button type="submit" class="btn btn-danger">Excluir</button>
+    </form>
+
+    <h2 class="mt-5">Edição de Clientes</h2>
+    <form action="edit" method="POST">
+      <div class="form-group">
+        <label for="editId">ID:</label>
+        <input type="text" class="form-control" id="editId" name="id" required placeholder="Digite o ID">
+      </div>
+      <div class="form-group">
+        <label for="editName">Nome:</label>
+        <input type="text" class="form-control" id="editName" name="name" required placeholder="Digite o nome">
+      </div>
+      <button type="submit" class="btn btn-warning">Editar</button>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
